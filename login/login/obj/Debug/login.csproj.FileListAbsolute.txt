@@ -1,0 +1,26 @@
+C:\visual studio 2013\Coursework\login\login\bin\Debug\login.exe.config
+C:\visual studio 2013\Coursework\login\login\bin\Debug\login.exe
+C:\visual studio 2013\Coursework\login\login\bin\Debug\login.pdb
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.Form1.resources
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.Properties.Resources.resources
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.csproj.GenerateResource.Cache
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.exe
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.pdb
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.csprojResolveAssemblyReference.cache
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.Menu.resources
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.Homepage.resources
+C:\visual studio 2013\Coursework\login\login\obj\Debug\login.Products.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.csproj.AssemblyReference.cache
+C:\Users\flast\source\repos\login\login\obj\Debug\login.exe
+C:\Users\flast\source\repos\login\login\obj\Debug\login.pdb
+C:\Users\flast\source\repos\login\login\obj\Debug\login.Form1.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.Homepage.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.Menu.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.Properties.Resources.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.csproj.GenerateResource.cache
+C:\Users\flast\source\repos\login\login\obj\Debug\login.csproj.CoreCompileInputs.cache
+C:\Users\flast\source\repos\login\login\bin\Debug\login.exe.config
+C:\Users\flast\source\repos\login\login\bin\Debug\login.exe
+C:\Users\flast\source\repos\login\login\bin\Debug\login.pdb
+C:\Users\flast\source\repos\login\login\obj\Debug\login.Products_list.resources
+C:\Users\flast\source\repos\login\login\obj\Debug\login.basket.resources
