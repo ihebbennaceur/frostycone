@@ -12,7 +12,9 @@ namespace the_forsty_cone
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new Form1());
+     
             Application.Run(new Registration_form());
+           
         }
     }
 }

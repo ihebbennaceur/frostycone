@@ -41,6 +41,7 @@ namespace the_forsty_cone
             tbox_confirmpassword = new TextBox();
             lbl_email = new Label();
             tbox_username = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btn_register
@@ -117,11 +118,22 @@ namespace the_forsty_cone
             tbox_username.Size = new Size(100, 23);
             tbox_username.TabIndex = 9;
             // 
+            // button1
+            // 
+            button1.Location = new Point(298, 305);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 10;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Registration_form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(lbl_email);
             Controls.Add(tbox_confirmpassword);
             Controls.Add(tbox_email);
@@ -149,6 +161,7 @@ namespace the_forsty_cone
         private TextBox tbox_confirmpassword;
         private Label lbl_email;
         private TextBox tbox_username;
+        private Button button1;
     }
 }
 
