@@ -16,5 +16,17 @@ namespace the_forsty_cone
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu m1 = new Menu();
+            m1.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Registration_form m1 = new Registration_form();
+            m1.ShowDialog();
+        }
     }
 }

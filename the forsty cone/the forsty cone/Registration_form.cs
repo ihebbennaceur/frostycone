@@ -38,6 +38,9 @@ namespace the_forsty_cone
         }
 
 
+       
+
+
 
         private void btn_register_Click(object sender, EventArgs e)
         {
@@ -51,33 +54,62 @@ namespace the_forsty_cone
 
             //chnaged password to [password] to avoid sql keyword conflict
 
-            using (SqlConnection con = new SqlConnection(stringconnction))
+
+            //        if (tbox_username.Text != null && tbox_password.Text != null && tbox_confirmpassword.Text != null && tbox_email.Text != null) //idk
+            //      {
+            
+            if (string.IsNullOrWhiteSpace(tbox_username.Text)== true && string.IsNullOrWhiteSpace(tbox_password.Text) && 
+                string.IsNullOrWhiteSpace(tbox_confirmpassword.Text) && string.IsNullOrWhiteSpace(tbox_email.Text))
             {
-                try
+                MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //check if any fields are empty
+            if (tbox_password.Text != tbox_confirmpassword.Text)
+            {
+
+                MessageBox.Show("Passwords do not match.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //check if passwords match
+            if (tbox_email.Text.Contains("@") == false || tbox_email.Text.Contains(".") == false)
+            {
+                MessageBox.Show("Email requires @ and .", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //simple email validation
+            using (SqlConnection con = new SqlConnection(stringconnction))
                 {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@username", tbox_username.Text);
-                        cmd.Parameters.AddWithValue("@email", tbox_email.Text);
-                        cmd.Parameters.AddWithValue("@password", tbox_password.Text);
+                        con.Open();
 
-                        cmd.ExecuteNonQuery();
+                        using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                        {
+                            cmd.Parameters.AddWithValue("@username", tbox_username.Text);
+                            cmd.Parameters.AddWithValue("@email", tbox_email.Text);
+                            cmd.Parameters.AddWithValue("@password", tbox_password.Text);
 
-                        MessageBox.Show("Register successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cmd.ExecuteNonQuery();
 
+                            MessageBox.Show("Register successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        }
 
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    con.Close();
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                con.Close();
-            }
+
+            
         }
+        
+  //      }
 
         private void Registration_form_Load(object sender, EventArgs e)
         {

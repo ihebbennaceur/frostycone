@@ -1,6 +1,6 @@
 ﻿namespace the_forsty_cone
 {
-    partial class Form1
+    partial class Menu
     {
         /// <summary>
         ///  Required designer variable.

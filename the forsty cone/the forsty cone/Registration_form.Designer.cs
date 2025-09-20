@@ -46,7 +46,7 @@ namespace the_forsty_cone
             // 
             // btn_register
             // 
-            btn_register.Location = new Point(139, 305);
+            btn_register.Location = new Point(160, 305);
             btn_register.Name = "btn_register";
             btn_register.Size = new Size(75, 23);
             btn_register.TabIndex = 0;
@@ -120,11 +120,11 @@ namespace the_forsty_cone
             // 
             // button1
             // 
-            button1.Location = new Point(298, 305);
+            button1.Location = new Point(130, 350);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(175, 23);
             button1.TabIndex = 10;
-            button1.Text = "button1";
+            button1.Text = "Go to Login";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 

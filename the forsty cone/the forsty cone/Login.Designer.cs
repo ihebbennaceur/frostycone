@@ -34,8 +34,8 @@
             tb_password = new TextBox();
             lbl_password = new Label();
             btn_forgotpassword = new Button();
-            lbl_displayerror = new Label();
             btn_createaccount = new Button();
+            btn_back = new Button();
             SuspendLayout();
             // 
             // btn_login
@@ -88,15 +88,7 @@
             btn_forgotpassword.TabIndex = 5;
             btn_forgotpassword.Text = "Forgot Password";
             btn_forgotpassword.UseVisualStyleBackColor = true;
-            // 
-            // lbl_displayerror
-            // 
-            lbl_displayerror.AutoSize = true;
-            lbl_displayerror.Location = new Point(88, 344);
-            lbl_displayerror.Name = "lbl_displayerror";
-            lbl_displayerror.Size = new Size(176, 15);
-            lbl_displayerror.TabIndex = 6;
-            lbl_displayerror.Text = "username or password incorrect";
+            btn_forgotpassword.Click += btn_forgotpassword_Click;
             // 
             // btn_createaccount
             // 
@@ -106,14 +98,25 @@
             btn_createaccount.TabIndex = 7;
             btn_createaccount.Text = "create account";
             btn_createaccount.UseVisualStyleBackColor = true;
+            btn_createaccount.Click += btn_createaccount_Click;
+            // 
+            // btn_back
+            // 
+            btn_back.Location = new Point(12, 71);
+            btn_back.Name = "btn_back";
+            btn_back.Size = new Size(75, 65);
+            btn_back.TabIndex = 8;
+            btn_back.Text = "home";
+            btn_back.UseVisualStyleBackColor = true;
+            btn_back.Click += btn_back_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(603, 593);
+            Controls.Add(btn_back);
             Controls.Add(btn_createaccount);
-            Controls.Add(lbl_displayerror);
             Controls.Add(btn_forgotpassword);
             Controls.Add(tb_password);
             Controls.Add(lbl_password);
@@ -135,7 +138,7 @@
         private TextBox tb_password;
         private Label lbl_password;
         private Button btn_forgotpassword;
-        private Label lbl_displayerror;
         private Button btn_createaccount;
+        private Button btn_back;
     }
 }
