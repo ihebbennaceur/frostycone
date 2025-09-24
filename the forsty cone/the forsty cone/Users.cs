@@ -14,8 +14,7 @@ public class Users
     //if phras[2] <
 
 
-    public Users()
-    {
+    public Users(){ }
 
 
 
@@ -63,7 +62,6 @@ public class Users
         {
             return true;
         }
-    }
+    } 
+}
 
-}
-}
