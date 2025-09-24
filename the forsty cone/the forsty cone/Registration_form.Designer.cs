@@ -42,6 +42,8 @@ namespace the_forsty_cone
             lbl_email = new Label();
             tbox_username = new TextBox();
             button1 = new Button();
+            tbox_DOB = new TextBox();
+            lbl_DOB = new Label();
             SuspendLayout();
             // 
             // btn_register
@@ -56,7 +58,7 @@ namespace the_forsty_cone
             // 
             // tbox_password
             // 
-            tbox_password.Location = new Point(205, 168);
+            tbox_password.Location = new Point(205, 132);
             tbox_password.Name = "tbox_password";
             tbox_password.Size = new Size(100, 23);
             tbox_password.TabIndex = 2;
@@ -64,7 +66,7 @@ namespace the_forsty_cone
             // lbl_username
             // 
             lbl_username.AutoSize = true;
-            lbl_username.Location = new Point(85, 132);
+            lbl_username.Location = new Point(85, 96);
             lbl_username.Name = "lbl_username";
             lbl_username.Size = new Size(60, 15);
             lbl_username.TabIndex = 3;
@@ -73,7 +75,7 @@ namespace the_forsty_cone
             // lbl_password
             // 
             lbl_password.AutoSize = true;
-            lbl_password.Location = new Point(85, 171);
+            lbl_password.Location = new Point(85, 135);
             lbl_password.Name = "lbl_password";
             lbl_password.Size = new Size(57, 15);
             lbl_password.TabIndex = 4;
@@ -82,7 +84,7 @@ namespace the_forsty_cone
             // lbl_confirmPassword
             // 
             lbl_confirmPassword.AutoSize = true;
-            lbl_confirmPassword.Location = new Point(85, 206);
+            lbl_confirmPassword.Location = new Point(85, 170);
             lbl_confirmPassword.Name = "lbl_confirmPassword";
             lbl_confirmPassword.Size = new Size(104, 15);
             lbl_confirmPassword.TabIndex = 5;
@@ -90,22 +92,24 @@ namespace the_forsty_cone
             // 
             // tbox_email
             // 
-            tbox_email.Location = new Point(205, 240);
+            tbox_email.Location = new Point(205, 204);
             tbox_email.Name = "tbox_email";
             tbox_email.Size = new Size(100, 23);
             tbox_email.TabIndex = 6;
             // 
             // tbox_confirmpassword
             // 
-            tbox_confirmpassword.Location = new Point(205, 203);
+            tbox_confirmpassword.Location = new Point(205, 167);
             tbox_confirmpassword.Name = "tbox_confirmpassword";
+            tbox_confirmpassword.PasswordChar = '*';
             tbox_confirmpassword.Size = new Size(100, 23);
             tbox_confirmpassword.TabIndex = 7;
+            tbox_confirmpassword.TextChanged += tbox_confirmpassword_TextChanged;
             // 
             // lbl_email
             // 
             lbl_email.AutoSize = true;
-            lbl_email.Location = new Point(85, 243);
+            lbl_email.Location = new Point(85, 207);
             lbl_email.Name = "lbl_email";
             lbl_email.Size = new Size(36, 15);
             lbl_email.TabIndex = 8;
@@ -113,7 +117,7 @@ namespace the_forsty_cone
             // 
             // tbox_username
             // 
-            tbox_username.Location = new Point(205, 129);
+            tbox_username.Location = new Point(205, 93);
             tbox_username.Name = "tbox_username";
             tbox_username.Size = new Size(100, 23);
             tbox_username.TabIndex = 9;
@@ -128,11 +132,29 @@ namespace the_forsty_cone
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // tbox_DOB
+            // 
+            tbox_DOB.Location = new Point(205, 242);
+            tbox_DOB.Name = "tbox_DOB";
+            tbox_DOB.Size = new Size(100, 23);
+            tbox_DOB.TabIndex = 11;
+            // 
+            // lbl_DOB
+            // 
+            lbl_DOB.AutoSize = true;
+            lbl_DOB.Location = new Point(85, 250);
+            lbl_DOB.Name = "lbl_DOB";
+            lbl_DOB.Size = new Size(73, 15);
+            lbl_DOB.TabIndex = 12;
+            lbl_DOB.Text = "Date of Birth";
+            // 
             // Registration_form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lbl_DOB);
+            Controls.Add(tbox_DOB);
             Controls.Add(button1);
             Controls.Add(lbl_email);
             Controls.Add(tbox_confirmpassword);
@@ -162,6 +184,8 @@ namespace the_forsty_cone
         private Label lbl_email;
         private TextBox tbox_username;
         private Button button1;
+        private TextBox tbox_DOB;
+        private Label lbl_DOB;
     }
 }
 

@@ -28,37 +28,27 @@ namespace the_forsty_cone
     public partial class Registration_form : Form
     {
         Login login = new Login();
+
+        Users u1 = new Users();
+
+
+
+
+
         public Registration_form()
         {
-            
+
             InitializeComponent();
-            
+}
 
-
-        }
-
-
-       
+  
 
 
 
         private void btn_register_Click(object sender, EventArgs e)
         {
 
-
-            string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
-
-            string insertQuery = "INSERT INTO users (username, email, [password]) VALUES (@username, @email, @password)";
-
-
-
-            //chnaged password to [password] to avoid sql keyword conflict
-
-
-            //        if (tbox_username.Text != null && tbox_password.Text != null && tbox_confirmpassword.Text != null && tbox_email.Text != null) //idk
-            //      {
-            
-            if (string.IsNullOrWhiteSpace(tbox_username.Text)== true && string.IsNullOrWhiteSpace(tbox_password.Text) && 
+            if (string.IsNullOrWhiteSpace(tbox_username.Text) == true && string.IsNullOrWhiteSpace(tbox_password.Text) &&
                 string.IsNullOrWhiteSpace(tbox_confirmpassword.Text) && string.IsNullOrWhiteSpace(tbox_email.Text))
             {
                 MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -77,39 +67,22 @@ namespace the_forsty_cone
                 MessageBox.Show("Email requires @ and .", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //simple email validation
-            using (SqlConnection con = new SqlConnection(stringconnction))
-                {
-                    try
-                    {
-                        con.Open();
+            if (tbox_DOB.Text.Length != 10 || tbox_DOB.Text[2] != '-' || tbox_DOB.Text[5] != '-')
+            {
+                MessageBox.Show("DOB must be in the format DD-MM-YYYY", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                        using (SqlCommand cmd = new SqlCommand(insertQuery, con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", tbox_username.Text);
-                            cmd.Parameters.AddWithValue("@email", tbox_email.Text);
-                            cmd.Parameters.AddWithValue("@password", tbox_password.Text);
+            u1.username = tbox_username.Text;
+            u1.password = tbox_password.Text;
+            u1.email = tbox_email.Text;
+            u1.DOB = tbox_DOB.Text;
 
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Register successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    con.Close();
-
-                }
-
-            
+            Database db1 = new Database();
+            db1.addnewuser(u1);
         }
-        
-  //      }
+
+        //      }
 
         private void Registration_form_Load(object sender, EventArgs e)
         {
@@ -126,6 +99,12 @@ namespace the_forsty_cone
             login.Show();
             this.Hide();
         }
+
+        private void tbox_confirmpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
 }
