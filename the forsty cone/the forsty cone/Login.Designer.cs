@@ -36,6 +36,7 @@
             btn_forgotpassword = new Button();
             btn_createaccount = new Button();
             btn_back = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btn_login
@@ -110,11 +111,22 @@
             btn_back.UseVisualStyleBackColor = true;
             btn_back.Click += btn_back_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(385, 159);
+            button1.Name = "button1";
+            button1.Size = new Size(93, 50);
+            button1.TabIndex = 9;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(603, 593);
+            Controls.Add(button1);
             Controls.Add(btn_back);
             Controls.Add(btn_createaccount);
             Controls.Add(btn_forgotpassword);
@@ -140,5 +152,6 @@
         private Button btn_forgotpassword;
         private Button btn_createaccount;
         private Button btn_back;
+        private Button button1;
     }
 }

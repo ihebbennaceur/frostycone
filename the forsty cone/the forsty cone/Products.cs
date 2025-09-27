@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace the_forsty_cone
 {
-    internal class Products
+    public class Products
     {
+    
+            public string ProductName { get; set; } = "";
+            public int ProductPrice { get; set; } = 0;
+            public int ProductId { get; set; }
+            public string imageurl { get; set; } = "";
+    
+
+
+        public Products() { }
+
+
+        
+
     }
+
+
 }

@@ -22,7 +22,7 @@ namespace the_forsty_cone
 
     {
 
-public Login()
+        public Login()
         {
 
             InitializeComponent();
@@ -36,7 +36,7 @@ public Login()
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            
+
 
 
             if (tb_username.Text != null && tb_password.Text != null)
@@ -45,11 +45,11 @@ public Login()
                 string u1 = tb_username.Text;
                 string p1 = tb_password.Text;
 
-               int workFactor = 12; // Default is 10
+                int workFactor = 12; // Default is 10
                 string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor);
 
 
-               // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
+                // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
 
                 string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
 
@@ -127,6 +127,13 @@ public Login()
         {
             ForgotPassword m1 = new ForgotPassword();
             m1.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Addproducts a1  = new Addproducts();
+            a1.ShowDialog();
+            
         }
     }
 }
