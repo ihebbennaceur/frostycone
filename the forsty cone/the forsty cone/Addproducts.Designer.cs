@@ -28,100 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Addproducts));
             label1 = new Label();
             btn_addproduct = new Button();
             tbx_productname = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
             tbx_productprice = new TextBox();
             label4 = new Label();
             tbx_productimage = new TextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(257, 109);
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.Location = new Point(111, 78);
             label1.Name = "label1";
-            label1.Size = new Size(79, 15);
+            label1.Size = new Size(131, 28);
             label1.TabIndex = 0;
-            label1.Text = "Add products";
+            label1.Text = "Add Products";
+            label1.Click += label1_Click;
             // 
             // btn_addproduct
             // 
-            btn_addproduct.Location = new Point(369, 249);
+            btn_addproduct.BackColor = SystemColors.ActiveCaptionText;
+            btn_addproduct.FlatAppearance.BorderSize = 0;
+            btn_addproduct.FlatStyle = FlatStyle.Flat;
+            btn_addproduct.ForeColor = Color.White;
+            btn_addproduct.Location = new Point(65, 360);
             btn_addproduct.Name = "btn_addproduct";
-            btn_addproduct.Size = new Size(106, 61);
+            btn_addproduct.Size = new Size(230, 33);
             btn_addproduct.TabIndex = 1;
             btn_addproduct.Text = "Add product";
-            btn_addproduct.UseVisualStyleBackColor = true;
+            btn_addproduct.UseVisualStyleBackColor = false;
             btn_addproduct.Click += btn_adddata_Click;
             // 
             // tbx_productname
             // 
-            tbx_productname.Location = new Point(208, 229);
+            tbx_productname.BackColor = Color.Gainsboro;
+            tbx_productname.BorderStyle = BorderStyle.None;
+            tbx_productname.Location = new Point(64, 165);
             tbx_productname.Name = "tbx_productname";
-            tbx_productname.Size = new Size(100, 23);
+            tbx_productname.PlaceholderText = "Name of product";
+            tbx_productname.Size = new Size(230, 16);
             tbx_productname.TabIndex = 2;
             tbx_productname.TextChanged += tbx_productname_TextChanged;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(84, 232);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 15);
-            label2.TabIndex = 3;
-            label2.Text = "name of product";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(84, 272);
-            label3.Name = "label3";
-            label3.Size = new Size(92, 15);
-            label3.TabIndex = 5;
-            label3.Text = "price of product";
-            // 
             // tbx_productprice
             // 
-            tbx_productprice.Location = new Point(208, 269);
+            tbx_productprice.BackColor = Color.Gainsboro;
+            tbx_productprice.BorderStyle = BorderStyle.None;
+            tbx_productprice.Location = new Point(65, 216);
             tbx_productprice.Name = "tbx_productprice";
-            tbx_productprice.Size = new Size(100, 23);
+            tbx_productprice.PlaceholderText = "Price of Product";
+            tbx_productprice.Size = new Size(230, 16);
             tbx_productprice.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 313);
+            label4.BackColor = Color.Gainsboro;
+            label4.Font = new Font("Segoe UI", 10F);
+            label4.Location = new Point(229, 265);
             label4.Name = "label4";
-            label4.Size = new Size(57, 15);
+            label4.Size = new Size(0, 19);
             label4.TabIndex = 7;
-            label4.Text = "image url";
+            label4.Click += label4_Click;
             // 
             // tbx_productimage
             // 
-            tbx_productimage.Location = new Point(208, 310);
+            tbx_productimage.BackColor = Color.Gainsboro;
+            tbx_productimage.BorderStyle = BorderStyle.None;
+            tbx_productimage.Location = new Point(65, 265);
             tbx_productimage.Name = "tbx_productimage";
-            tbx_productimage.Size = new Size(100, 23);
+            tbx_productimage.PlaceholderText = "image holder";
+            tbx_productimage.Size = new Size(229, 16);
             tbx_productimage.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(58, 29);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(246, 462);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
             // 
             // Addproducts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(873, 512);
             Controls.Add(label4);
             Controls.Add(tbx_productimage);
-            Controls.Add(label3);
             Controls.Add(tbx_productprice);
-            Controls.Add(label2);
             Controls.Add(tbx_productname);
             Controls.Add(btn_addproduct);
             Controls.Add(label1);
+            Controls.Add(pictureBox1);
             Name = "Addproducts";
             Text = "Addproducts";
             Load += Addproducts_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,10 +142,9 @@
         private Label label1;
         private Button btn_addproduct;
         private TextBox tbx_productname;
-        private Label label2;
-        private Label label3;
         private TextBox tbx_productprice;
         private Label label4;
         private TextBox tbx_productimage;
+        private PictureBox pictureBox1;
     }
 }

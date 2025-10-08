@@ -32,142 +32,125 @@ namespace the_forsty_cone
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration_form));
             btn_register = new Button();
             tbox_password = new TextBox();
-            lbl_username = new Label();
-            lbl_password = new Label();
-            lbl_confirmPassword = new Label();
             tbox_email = new TextBox();
             tbox_confirmpassword = new TextBox();
-            lbl_email = new Label();
             tbox_username = new TextBox();
             button1 = new Button();
             tbox_DOB = new TextBox();
-            lbl_DOB = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btn_register
             // 
-            btn_register.Location = new Point(160, 305);
+            btn_register.BackColor = SystemColors.ActiveCaptionText;
+            btn_register.FlatAppearance.BorderSize = 0;
+            btn_register.FlatStyle = FlatStyle.Flat;
+            btn_register.ForeColor = SystemColors.ButtonHighlight;
+            btn_register.Location = new Point(21, 419);
             btn_register.Name = "btn_register";
-            btn_register.Size = new Size(75, 23);
+            btn_register.Size = new Size(219, 29);
             btn_register.TabIndex = 0;
             btn_register.Text = "Register";
-            btn_register.UseVisualStyleBackColor = true;
+            btn_register.UseVisualStyleBackColor = false;
             btn_register.Click += btn_register_Click;
             // 
             // tbox_password
             // 
-            tbox_password.Location = new Point(205, 132);
+            tbox_password.BackColor = Color.Gainsboro;
+            tbox_password.BorderStyle = BorderStyle.None;
+            tbox_password.Location = new Point(22, 187);
             tbox_password.Name = "tbox_password";
-            tbox_password.Size = new Size(100, 23);
+            tbox_password.PlaceholderText = "Password";
+            tbox_password.Size = new Size(224, 16);
             tbox_password.TabIndex = 2;
-            // 
-            // lbl_username
-            // 
-            lbl_username.AutoSize = true;
-            lbl_username.Location = new Point(85, 96);
-            lbl_username.Name = "lbl_username";
-            lbl_username.Size = new Size(60, 15);
-            lbl_username.TabIndex = 3;
-            lbl_username.Text = "Username";
-            // 
-            // lbl_password
-            // 
-            lbl_password.AutoSize = true;
-            lbl_password.Location = new Point(85, 135);
-            lbl_password.Name = "lbl_password";
-            lbl_password.Size = new Size(57, 15);
-            lbl_password.TabIndex = 4;
-            lbl_password.Text = "Password";
-            // 
-            // lbl_confirmPassword
-            // 
-            lbl_confirmPassword.AutoSize = true;
-            lbl_confirmPassword.Location = new Point(85, 170);
-            lbl_confirmPassword.Name = "lbl_confirmPassword";
-            lbl_confirmPassword.Size = new Size(104, 15);
-            lbl_confirmPassword.TabIndex = 5;
-            lbl_confirmPassword.Text = "Confirm Password";
             // 
             // tbox_email
             // 
-            tbox_email.Location = new Point(205, 204);
+            tbox_email.BackColor = Color.Gainsboro;
+            tbox_email.BorderStyle = BorderStyle.None;
+            tbox_email.Location = new Point(22, 290);
             tbox_email.Name = "tbox_email";
-            tbox_email.Size = new Size(100, 23);
+            tbox_email.PlaceholderText = "Email";
+            tbox_email.Size = new Size(219, 16);
             tbox_email.TabIndex = 6;
             // 
             // tbox_confirmpassword
             // 
-            tbox_confirmpassword.Location = new Point(205, 167);
+            tbox_confirmpassword.BackColor = Color.Gainsboro;
+            tbox_confirmpassword.BorderStyle = BorderStyle.None;
+            tbox_confirmpassword.Location = new Point(22, 238);
             tbox_confirmpassword.Name = "tbox_confirmpassword";
             tbox_confirmpassword.PasswordChar = '*';
-            tbox_confirmpassword.Size = new Size(100, 23);
+            tbox_confirmpassword.PlaceholderText = "Confirm Password";
+            tbox_confirmpassword.Size = new Size(222, 16);
             tbox_confirmpassword.TabIndex = 7;
             tbox_confirmpassword.TextChanged += tbox_confirmpassword_TextChanged;
             // 
-            // lbl_email
-            // 
-            lbl_email.AutoSize = true;
-            lbl_email.Location = new Point(85, 207);
-            lbl_email.Name = "lbl_email";
-            lbl_email.Size = new Size(36, 15);
-            lbl_email.TabIndex = 8;
-            lbl_email.Text = "Email";
-            // 
             // tbox_username
             // 
-            tbox_username.Location = new Point(205, 93);
+            tbox_username.BackColor = Color.Gainsboro;
+            tbox_username.BorderStyle = BorderStyle.None;
+            tbox_username.Location = new Point(21, 137);
             tbox_username.Name = "tbox_username";
-            tbox_username.Size = new Size(100, 23);
+            tbox_username.PlaceholderText = "Username";
+            tbox_username.Size = new Size(220, 16);
             tbox_username.TabIndex = 9;
             // 
             // button1
             // 
-            button1.Location = new Point(130, 350);
+            button1.BackColor = SystemColors.ActiveCaptionText;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(39, 469);
             button1.Name = "button1";
-            button1.Size = new Size(175, 23);
+            button1.Size = new Size(174, 23);
             button1.TabIndex = 10;
             button1.Text = "Go to Login";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // tbox_DOB
             // 
-            tbox_DOB.Location = new Point(205, 242);
+            tbox_DOB.BackColor = Color.Gainsboro;
+            tbox_DOB.BorderStyle = BorderStyle.None;
+            tbox_DOB.Location = new Point(22, 344);
             tbox_DOB.Name = "tbox_DOB";
-            tbox_DOB.Size = new Size(100, 23);
+            tbox_DOB.PlaceholderText = "Date of Birth";
+            tbox_DOB.Size = new Size(218, 16);
             tbox_DOB.TabIndex = 11;
             // 
-            // lbl_DOB
+            // pictureBox1
             // 
-            lbl_DOB.AutoSize = true;
-            lbl_DOB.Location = new Point(85, 250);
-            lbl_DOB.Name = "lbl_DOB";
-            lbl_DOB.Size = new Size(73, 15);
-            lbl_DOB.TabIndex = 12;
-            lbl_DOB.Text = "Date of Birth";
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(243, 490);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
             // 
             // Registration_form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lbl_DOB);
+            ClientSize = new Size(258, 504);
             Controls.Add(tbox_DOB);
             Controls.Add(button1);
-            Controls.Add(lbl_email);
             Controls.Add(tbox_confirmpassword);
             Controls.Add(tbox_email);
-            Controls.Add(lbl_confirmPassword);
-            Controls.Add(lbl_password);
-            Controls.Add(lbl_username);
             Controls.Add(tbox_password);
             Controls.Add(tbox_username);
             Controls.Add(btn_register);
+            Controls.Add(pictureBox1);
             Name = "Registration_form";
             Text = "Registration_form";
             Load += Registration_form_Load_1;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,16 +159,12 @@ namespace the_forsty_cone
 
         private Button btn_register;
         private TextBox tbox_password;
-        private Label lbl_username;
-        private Label lbl_password;
-        private Label lbl_confirmPassword;
         private TextBox tbox_email;
         private TextBox tbox_confirmpassword;
-        private Label lbl_email;
         private TextBox tbox_username;
         private Button button1;
         private TextBox tbox_DOB;
-        private Label lbl_DOB;
+        private PictureBox pictureBox1;
     }
 }
 

@@ -12,13 +12,13 @@ using Microsoft.Data.SqlClient;
 namespace the_forsty_cone
 {
     public partial class Addproducts : Form
-     
+
 
     {
 
 
-          Products p1 = new Products();  //tunnel p1
-            Database db = new Database();
+        Products p1 = new Products();  //tunnel p1
+        Database db = new Database();
         public Addproducts()
         {
             InitializeComponent();
@@ -66,6 +66,21 @@ namespace the_forsty_cone
         }
 
         private void tbx_productname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

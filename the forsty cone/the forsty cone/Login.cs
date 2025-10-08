@@ -38,61 +38,65 @@ namespace the_forsty_cone
         {
 
 
+            Database db2 = new Database();
 
-            if (tb_username.Text != null && tb_password.Text != null)
-            {
+            string u1 = tb_username.Text;
+            string p1 = tb_password.Text;
 
-                string u1 = tb_username.Text;
-                string p1 = tb_password.Text;
+            db2.loginuser(u1, p1);
 
-                int workFactor = 12; // Default is 10
-                string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor);
+            //if (tb_username.Text != null && tb_password.Text != null)
+            //{
 
-
-                // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
-
-                string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
-
-                string query2 = "select id from users where upper(username) = upper(@username) and password = @password";
-
-                using (SqlConnection con = new SqlConnection(stringconnction))
-                {
-                    try
-                    {
-                        con.Open();
-
-                        using (SqlCommand cmd = new SqlCommand(query2, con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", tb_username.Text);
-                            cmd.Parameters.AddWithValue("@password", hashedpwd);
-
-                            cmd.ExecuteNonQuery();
-                            int result = 0;
-                            if (cmd.Parameters.Count > 0)
-                            {
-                                result = (int)cmd.ExecuteScalar();
-
-                            }
-
-                            MessageBox.Show("login successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        }
+            //    string u1 = tb_username.Text;
+            //    string p1 = tb_password.Text;
 
 
 
 
+            //          int workFactor = 12; // Default is 10
+            //          string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor);
 
-                        //check with database
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+            //          // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
+
+            ////          string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
+
+            //          string query2 = "select id from users where upper(username) = upper(@username) and password = @password";
+
+            //          using (SqlConnection con = new SqlConnection(stringconnction))
+            //          {
+            //              try
+            //              {
+            //                  con.Open();
+
+            //                  using (SqlCommand cmd = new SqlCommand(query2, con))
+            //                  {
+            //                      cmd.Parameters.AddWithValue("@username", tb_username.Text);
+            //                      cmd.Parameters.AddWithValue("@password", hashedpwd);
+
+            //                      cmd.ExecuteNonQuery();
+            //                      int result = 0;
+            //                      if (cmd.Parameters.Count > 0)
+            //                      {
+            //                          result = (int)cmd.ExecuteScalar();
+
+            //                      }
+
+            //                      MessageBox.Show("login successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //                  }
 
 
 
 
 
+            //                  //check with database
+            //              }
+            //              catch (Exception ex)
+            //              {
+            //                  MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //              }
 
 
 
@@ -100,9 +104,14 @@ namespace the_forsty_cone
 
 
 
-                }
-            }
+
+
+
+
+
+            //          }
         }
+
         private void Login_Load(object sender, EventArgs e)
         {
 
@@ -131,9 +140,24 @@ namespace the_forsty_cone
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Addproducts a1  = new Addproducts();
+            Addproducts a1 = new Addproducts();
             a1.ShowDialog();
-            
+
+        }
+
+        private void lbl_password_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_username_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

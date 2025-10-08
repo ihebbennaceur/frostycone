@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frontpage));
             button1 = new Button();
             label1 = new Label();
             button2 = new Button();
@@ -35,28 +36,32 @@
             // 
             // button1
             // 
-            button1.Location = new Point(40, 145);
+            button1.Font = new Font("Segoe UI", 25F);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.TopCenter;
+            button1.Location = new Point(22, 132);
             button1.Name = "button1";
-            button1.Size = new Size(428, 72);
+            button1.Size = new Size(422, 328);
             button1.TabIndex = 0;
-            button1.Text = "See menu ";
+            button1.Text = "See Menu!";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(222, 67);
+            label1.Font = new Font("Segoe UI", 22F);
+            label1.Location = new Point(70, 26);
             label1.Name = "label1";
-            label1.Size = new Size(57, 15);
+            label1.Size = new Size(223, 41);
             label1.TabIndex = 1;
-            label1.Text = "Welcome";
+            label1.Text = "The frosty cone";
             // 
             // button2
             // 
-            button2.Location = new Point(357, 38);
+            button2.Location = new Point(358, 22);
             button2.Name = "button2";
-            button2.Size = new Size(136, 72);
+            button2.Size = new Size(86, 62);
             button2.TabIndex = 2;
             button2.Text = "Login/register";
             button2.UseVisualStyleBackColor = true;
@@ -66,7 +71,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(560, 638);
+            BackColor = Color.DarkOrange;
+            ClientSize = new Size(489, 493);
             Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(button1);

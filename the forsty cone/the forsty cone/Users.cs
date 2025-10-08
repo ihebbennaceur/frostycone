@@ -9,7 +9,7 @@ public class Users
     public string email = "";
     public int id;
     public int isAdmin = 0;
-    public string DOB = "";// = "DD-MM-YYYY";
+    public string DOB = ""; // = "DD-MM-YYYY";
 
     //if phras[2] <
 
@@ -44,7 +44,7 @@ public class Users
     public bool Checkdt(string date)
     {
 
-        string[] s1 = date.Split('/');  //s1 stroing in a list (means u need to learn how to create lists ) //s2 acces to element in list (looping over the list) ) ['31','02','1993']
+        string[] s1 = date.Split('-');  //s1 stroing in a list (means u need to learn how to create lists ) //s2 acces to element in list (looping over the list) ) ['31','02','1993']
 
 
         if (int.Parse(s1[0]) > 31 || int.Parse(s1[0]) < 0)

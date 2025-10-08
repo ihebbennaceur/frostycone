@@ -39,9 +39,9 @@ namespace the_forsty_cone
         {
 
             InitializeComponent();
-}
+        }
 
-  
+
 
 
 
@@ -67,11 +67,7 @@ namespace the_forsty_cone
                 MessageBox.Show("Email requires @ and .", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (tbox_DOB.Text.Length != 10 || tbox_DOB.Text[2] != '-' || tbox_DOB.Text[5] != '-')
-            {
-                MessageBox.Show("DOB must be in the format DD-MM-YYYY", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
 
             u1.username = tbox_username.Text;
             u1.password = tbox_password.Text;
@@ -105,6 +101,10 @@ namespace the_forsty_cone
 
         }
 
+        private void lbl_confirmPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
