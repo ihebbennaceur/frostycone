@@ -130,6 +130,7 @@ namespace the_forsty_cone
         {
             Frontpage m1 = new Frontpage();
             m1.ShowDialog();
+            
         }
 
         private void btn_forgotpassword_Click(object sender, EventArgs e)
@@ -158,6 +159,12 @@ namespace the_forsty_cone
         private void tb_username_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Removeproducts a1 = new Removeproducts();
+            a1.ShowDialog();
         }
     }
 }

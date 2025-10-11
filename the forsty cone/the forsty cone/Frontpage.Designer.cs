@@ -59,9 +59,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(358, 22);
+            button2.Location = new Point(337, 22);
             button2.Name = "button2";
-            button2.Size = new Size(86, 62);
+            button2.Size = new Size(107, 60);
             button2.TabIndex = 2;
             button2.Text = "Login/register";
             button2.UseVisualStyleBackColor = true;
@@ -78,6 +78,7 @@
             Controls.Add(button1);
             Name = "Frontpage";
             Text = "Frontpage";
+            Load += Frontpage_Load;
             ResumeLayout(false);
             PerformLayout();
         }

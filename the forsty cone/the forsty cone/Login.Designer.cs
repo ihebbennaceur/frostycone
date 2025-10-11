@@ -38,6 +38,7 @@
             button1 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -148,12 +149,23 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            button2.Location = new Point(652, 366);
+            button2.Name = "button2";
+            button2.Size = new Size(93, 50);
+            button2.TabIndex = 12;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(836, 617);
+            Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(btn_back);
@@ -182,5 +194,6 @@
         private Button button1;
         private Label label1;
         private PictureBox pictureBox1;
+        private Button button2;
     }
 }

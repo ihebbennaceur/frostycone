@@ -84,5 +84,10 @@ namespace the_forsty_cone
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

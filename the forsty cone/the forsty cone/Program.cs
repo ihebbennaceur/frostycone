@@ -11,10 +11,11 @@ namespace the_forsty_cone
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new Form1());
-     
-            Application.Run(new Registration_form());
-           
+            Application.Run(new Frontpage());
+
+
+            // Application.Run(new Registration_form());
+
         }
     }
 }

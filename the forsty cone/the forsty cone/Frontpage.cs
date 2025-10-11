@@ -28,5 +28,10 @@ namespace the_forsty_cone
             Registration_form m1 = new Registration_form();
             m1.ShowDialog();
         }
+
+        private void Frontpage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
