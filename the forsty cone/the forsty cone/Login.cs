@@ -36,67 +36,14 @@ namespace the_forsty_cone
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tb_username.Text) || string.IsNullOrWhiteSpace(tb_password.Text)) //this checks if either field is empty
+            {
+                MessageBox.Show("Please enter both username and password", "Input Required",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); //display cause of error to user
+                return;//exit the method early
+            }
 
-
-            Database db2 = new Database();
-
-            string u1 = tb_username.Text;
-            string p1 = tb_password.Text;
-
-            db2.loginuser(u1, p1);
-
-            //if (tb_username.Text != null && tb_password.Text != null)
-            //{
-
-            //    string u1 = tb_username.Text;
-            //    string p1 = tb_password.Text;
-
-
-
-
-            //          int workFactor = 12; // Default is 10
-            //          string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor);
-
-
-            //          // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
-
-            ////          string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
-
-            //          string query2 = "select id from users where upper(username) = upper(@username) and password = @password";
-
-            //          using (SqlConnection con = new SqlConnection(stringconnction))
-            //          {
-            //              try
-            //              {
-            //                  con.Open();
-
-            //                  using (SqlCommand cmd = new SqlCommand(query2, con))
-            //                  {
-            //                      cmd.Parameters.AddWithValue("@username", tb_username.Text);
-            //                      cmd.Parameters.AddWithValue("@password", hashedpwd);
-
-            //                      cmd.ExecuteNonQuery();
-            //                      int result = 0;
-            //                      if (cmd.Parameters.Count > 0)
-            //                      {
-            //                          result = (int)cmd.ExecuteScalar();
-
-            //                      }
-
-            //                      MessageBox.Show("login successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //                  }
-
-
-
-
-
-            //                  //check with database
-            //              }
-            //              catch (Exception ex)
-            //              {
-            //                  MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //              }
+            Database db2 = new Database(); //create database object to call method
 
 
 
@@ -109,8 +56,101 @@ namespace the_forsty_cone
 
 
 
-            //          }
+
+
+
+
+
+
+            if (db2.loginuser(tb_username.Text, tb_password.Text) == true)
+            {
+                Menu m1 = new Menu();
+                this.Hide();
+
+                m1.FormClosed += (s, args) =>
+                 {
+                     Session.Instance.Clear(); // Clear session when menu is closed
+                     this.Close(); // Close login form
+                 };
+
+                m1.Show();
+            }
         }
+
+
+
+        //string u1 = tb_username.Text;
+        //string p1 = tb_password.Text;
+
+        //db2.loginuser(u1, p1);
+
+
+        //if (tb_username.Text != null && tb_password.Text != null)
+        //{
+
+        //    string u1 = tb_username.Text;
+        //    string p1 = tb_password.Text;
+
+
+
+
+        //          int workFactor = 12; // Default is 10
+        //          string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor);
+
+
+        //          // string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1);
+
+        ////          string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
+
+        //          string query2 = "select id from users where upper(username) = upper(@username) and password = @password";
+
+        //          using (SqlConnection con = new SqlConnection(stringconnction))
+        //          {
+        //              try
+        //              {
+        //                  con.Open();
+
+        //                  using (SqlCommand cmd = new SqlCommand(query2, con))
+        //                  {
+        //                      cmd.Parameters.AddWithValue("@username", tb_username.Text);
+        //                      cmd.Parameters.AddWithValue("@password", hashedpwd);
+
+        //                      cmd.ExecuteNonQuery();
+        //                      int result = 0;
+        //                      if (cmd.Parameters.Count > 0)
+        //                      {
+        //                          result = (int)cmd.ExecuteScalar();
+
+        //                      }
+
+        //                      MessageBox.Show("login successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //                  }
+
+
+
+
+
+        //                  //check with database
+        //              }
+        //              catch (Exception ex)
+        //              {
+        //                  MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //              }
+
+
+
+
+
+
+
+
+
+
+
+
+        //          }
+        //}
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -122,15 +162,15 @@ namespace the_forsty_cone
 
         private void btn_createaccount_Click(object sender, EventArgs e)
         {
-            Registration_form m1 = new Registration_form();
-            m1.ShowDialog();
+            Registration_form m1 = new Registration_form(); //open registration form
+            m1.ShowDialog(); 
         }
 
         private void btn_back_Click(object sender, EventArgs e)
         {
             Frontpage m1 = new Frontpage();
             m1.ShowDialog();
-            
+
         }
 
         private void btn_forgotpassword_Click(object sender, EventArgs e)
@@ -141,8 +181,7 @@ namespace the_forsty_cone
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Addproducts a1 = new Addproducts();
-            a1.ShowDialog();
+
 
         }
 
@@ -163,8 +202,18 @@ namespace the_forsty_cone
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Removeproducts a1 = new Removeproducts();
-            a1.ShowDialog();
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Admin m2 = new Admin();
+            m2.ShowDialog();
         }
     }
 }

@@ -4,35 +4,36 @@ using System.Text;
 
 public class Users
 {
-    public string username = "";
+   
+    public string username = ""; 
     public string password = "";
     public string email = "";
     public int id;
     public int isAdmin = 0;
     public string DOB = ""; // = "DD-MM-YYYY";
 
-    //if phras[2] <
-
-
-    public Users(){ }
 
 
 
+    public Users(){}
 
 
 
-        bool chkint(char a)
+
+
+
+        bool chkint(char a) 
         {
-            char[] nums = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] nums = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; 
 
-            for (int I = 0; I < nums.Length; I++)
+            for (int I = 0; I < nums.Length; I++) 
             {
-                if (a != nums[I])
+                if (a != nums[I]) 
                 {
                     continue;
                 }
                 else
-                    return true;
+                    return true; 
             }
             return false;
         }
@@ -44,10 +45,10 @@ public class Users
     public bool Checkdt(string date)
     {
 
-        string[] s1 = date.Split('-');  //s1 stroing in a list (means u need to learn how to create lists ) //s2 acces to element in list (looping over the list) ) ['31','02','1993']
+        string[] s1 = date.Split('-');  
 
 
-        if (int.Parse(s1[0]) > 31 || int.Parse(s1[0]) < 0)
+        if (int.Parse(s1[0]) > 31 || int.Parse(s1[0]) < 0) 
         {
             return false;
         }

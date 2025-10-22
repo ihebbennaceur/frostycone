@@ -24,7 +24,7 @@ namespace the_forsty_cone
         {
             
 
-            if (!int.TryParse(tbx_proid.Text, out int id))
+            if (!int.TryParse(tbx_proid.Text, out int id))  //control check for the input type
             {
                 MessageBox.Show("Please enter a valid id.");
                 return;

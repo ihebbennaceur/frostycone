@@ -64,6 +64,7 @@ namespace the_forsty_cone
             tbox_password.BorderStyle = BorderStyle.None;
             tbox_password.Location = new Point(22, 187);
             tbox_password.Name = "tbox_password";
+            tbox_password.PasswordChar = '*';
             tbox_password.PlaceholderText = "Password";
             tbox_password.Size = new Size(224, 16);
             tbox_password.TabIndex = 2;
@@ -133,6 +134,7 @@ namespace the_forsty_cone
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Registration_form
             // 

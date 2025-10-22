@@ -1,6 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -21,18 +23,18 @@ namespace the_forsty_cone
         public void addnewuser(Users user)
         {
 
-
-            // string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
+         
+          //  string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
 
             string insertQuery = "INSERT INTO users (username, email, [password],DOB,isadmin) VALUES (@username, @email, @password ,@dob,@admin)";
 
 
             using (SqlConnection con = new SqlConnection(this.stringconnction))
             {
-                try
+                try //checks for errors
                 {
                     con.Open();
-
+                    //adds into database
                     using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                     {
                         cmd.Parameters.AddWithValue("@username", user.username);
@@ -50,7 +52,7 @@ namespace the_forsty_cone
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception ex) //checks for errors
                 {
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -93,20 +95,21 @@ namespace the_forsty_cone
 
         public void addproducts(Products product2)
         {
-            //  string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
+            //creates a connection to the database
+            string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True"; 
 
-            string insertQuery = "INSERT INTO Products (Product_name, Product_price, Product_image) VALUES (@name, @price,@img)";
-
+            string insertQuery = "INSERT INTO Products (Product_name, Product_price, Product_image) VALUES (@name, @price,@img)"; 
 
             using (SqlConnection con = new SqlConnection(this.stringconnction))
             {
-                try
+
+                try //checks for errors
                 {
                     con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                    //adds into database
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, con)) 
                     {
-                        cmd.Parameters.AddWithValue("@name", product2.ProductName);
+                        cmd.Parameters.AddWithValue("@name", product2.ProductName); //this line adds the product name to the SQL command
                         cmd.Parameters.AddWithValue("@price", product2.ProductPrice);
                         cmd.Parameters.AddWithValue("@img", product2.imageurl);
 
@@ -121,73 +124,70 @@ namespace the_forsty_cone
                     }
 
                 }
-                catch (Exception ex)
+
+                catch (Exception ex) //checks for errors
                 {
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.Close();
+                con.Close(); 
 
             }
         }
 
-        public void loginuser(string username1, string password1)
+        public bool loginuser(string username, string password)
         {
-            //int workFactor = 12; // Default is 10
-            //string hashedpwd = BCrypt.Net.BCrypt.HashPassword(p1, workFactor); //how to fix?
-
-
-            //string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
-
-            string query2 = "select id from users where upper(username) = upper(@username) and password = @password";
-
-            using (SqlConnection con = new SqlConnection(stringconnction))
+            try
             {
-                try
+                string query = @"SELECT id, username, isadmin 
+                                 FROM users 
+                                 WHERE UPPER(username)=UPPER(@username) 
+                                 AND [password]=@password";
+
+                using (SqlConnection con = new SqlConnection(stringconnction))
                 {
                     con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query2, con))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@username", username1); //change to just .username instead of u1?
-                        cmd.Parameters.AddWithValue("@password", password1);
+                        cmd.Parameters.AddWithValue("@username", username ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@password", password ?? string.Empty);
 
-                        cmd.ExecuteNonQuery();
-                        int result = 0;
-                        if (cmd.Parameters.Count > 0)
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            result = (int)cmd.ExecuteScalar();
+                            if (reader.Read())
+                            {
+                                Session.Instance.UserId = reader.GetInt32(0);
+                                Session.Instance.Username = reader.GetString(1);
+                                Session.Instance.IsAdmin = reader.GetInt32(0);
 
+                                MessageBox.Show("Login successful", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }
                         }
-
-                        MessageBox.Show("login successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
-
-
-
-
-
-
-                    //check with database
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-
-
-
-
-
-
-
-
-
-
-
+                MessageBox.Show("Invalid username or password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during login: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+    
+        
 
 
 
@@ -272,6 +272,120 @@ namespace the_forsty_cone
         }
 
 
+        public void RemoveFromBasket(int a,int b) //make a methode that takes id as parameter and remove it from table basket
+        {
+            string deleteQuery = "DELETE FROM Basket WHERE id= @u_id  and  Product_id = @p_id";
+            using (SqlConnection con = new SqlConnection(this.stringconnction))
+            {
+                try
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("p_id", a);
+                        cmd.Parameters.AddWithValue("u_id", b);
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
+            }
+        }
+
+        public void AddToBasket(int a, int b)
+        {
+            string ADDQuery = "INSERT INTO Basket WHERE id= @u_id and Product_id = @p_id";
+            using (SqlConnection con = new SqlConnection(this.stringconnction))
+            {
+                try
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(ADDQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("u_id", a);
+                        cmd.Parameters.AddWithValue("u_id", b);
+                        
+                        cmd.ExecuteNonQuery();
+
+                     
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
+            }
+        }
+
+        public void AddToUsers(int a, string b, int c)
+        {
+            string ADDQuery2 = "SELECT id, username, isadmin FROM users";
+
+
+            using (SqlConnection con = new SqlConnection(this.stringconnction))
+            {
+                try
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(ADDQuery2, con))
+                    {
+                        cmd.Parameters.AddWithValue("u_id", a);
+                        cmd.Parameters.AddWithValue("u_username", b);
+                        cmd.Parameters.AddWithValue("u_isadmin", c);
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
+            }
+        }
+
+        public void MakeAdmin(int id, int isadmin)
+        {
+            string ADDQuery2 = "SELECT id, isadmin FROM users";
+
+
+            using (SqlConnection con = new SqlConnection(this.stringconnction))
+            {
+                try
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(ADDQuery2, con))
+                    {
+                        cmd.Parameters.AddWithValue("u_id", id);
+                        cmd.Parameters.AddWithValue("u_isadmin", isadmin);
+                        cmd.Parameters.AddWithValue("@isadmin", 1); 
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+
+            }
+        }
 
     }
 }

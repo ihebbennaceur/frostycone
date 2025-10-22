@@ -65,17 +65,19 @@ namespace the_forsty_cone
             if (tbox_email.Text.Contains("@") == false || tbox_email.Text.Contains(".") == false)
             {
                 MessageBox.Show("Email requires @ and .", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+               
+                
+                return; 
             }
 
-
-            u1.username = tbox_username.Text;
+            
+            u1.username = tbox_username.Text; //assigning user inputs to user object properties
             u1.password = tbox_password.Text;
             u1.email = tbox_email.Text;
             u1.DOB = tbox_DOB.Text;
 
-            Database db1 = new Database();
-            db1.addnewuser(u1);
+            Database db1 = new Database(); //creating database object to call method
+            db1.addnewuser(u1); //calling method to add new user to database
         }
 
         //      }
@@ -102,6 +104,11 @@ namespace the_forsty_cone
         }
 
         private void lbl_confirmPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
