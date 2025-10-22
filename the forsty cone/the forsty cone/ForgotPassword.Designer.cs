@@ -29,73 +29,93 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            tbox_pass = new TextBox();
-            tbox_confirmpass = new TextBox();
-            btn_reset = new Button();
             label2 = new Label();
             label3 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            button1 = new Button();
+            textBox3 = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(135, 138);
+            label1.Location = new Point(93, 154);
             label1.Name = "label1";
-            label1.Size = new Size(91, 15);
+            label1.Size = new Size(38, 15);
             label1.TabIndex = 0;
-            label1.Text = "Reset Password:";
-            // 
-            // tbox_pass
-            // 
-            tbox_pass.Location = new Point(175, 239);
-            tbox_pass.Name = "tbox_pass";
-            tbox_pass.Size = new Size(100, 23);
-            tbox_pass.TabIndex = 1;
-            // 
-            // tbox_confirmpass
-            // 
-            tbox_confirmpass.Location = new Point(175, 294);
-            tbox_confirmpass.Name = "tbox_confirmpass";
-            tbox_confirmpass.Size = new Size(100, 23);
-            tbox_confirmpass.TabIndex = 2;
-            // 
-            // btn_reset
-            // 
-            btn_reset.Location = new Point(122, 356);
-            btn_reset.Name = "btn_reset";
-            btn_reset.Size = new Size(75, 23);
-            btn_reset.TabIndex = 3;
-            btn_reset.Text = "Reset";
-            btn_reset.UseVisualStyleBackColor = true;
+            label1.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(50, 242);
+            label2.Location = new Point(93, 205);
             label2.Name = "label2";
-            label2.Size = new Size(87, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Enter Password";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 1;
+            label2.Text = "label2";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 302);
+            label3.Location = new Point(93, 260);
             label3.Name = "label3";
-            label3.Size = new Size(104, 15);
-            label3.TabIndex = 5;
-            label3.Text = "Confirm Password";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 2;
+            label3.Text = "label3";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(172, 154);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(172, 205);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 4;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(120, 333);
+            button1.Name = "button1";
+            button1.Size = new Size(122, 31);
+            button1.TabIndex = 5;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(172, 260);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(100, 23);
+            textBox3.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(172, 72);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 15);
+            label4.TabIndex = 7;
+            label4.Text = "label4";
             // 
             // ForgotPassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(797, 503);
+            Controls.Add(label4);
+            Controls.Add(textBox3);
+            Controls.Add(button1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(btn_reset);
-            Controls.Add(tbox_confirmpass);
-            Controls.Add(tbox_pass);
             Controls.Add(label1);
             Name = "ForgotPassword";
             Text = "ForgotPassword";
@@ -107,10 +127,12 @@
         #endregion
 
         private Label label1;
-        private TextBox tbox_pass;
-        private TextBox tbox_confirmpass;
-        private Button btn_reset;
         private Label label2;
         private Label label3;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Button button1;
+        private TextBox textBox3;
+        private Label label4;
     }
 }

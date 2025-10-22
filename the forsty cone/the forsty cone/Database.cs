@@ -4,6 +4,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -354,6 +355,85 @@ namespace the_forsty_cone
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
+
+            }
+        }
+
+
+        bool checkEmailExist(string email)
+        {
+            string query = "select count(*) from users where email=@email";
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(this.stringconnction))
+            {
+                try
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@email", email);
+                        count = (int)cmd.ExecuteScalar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+            }
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void resetpassword(string email, string username, string dob)
+        {
+            if (checkEmailExist(email) == true)
+            {
+
+
+                try
+                {
+                    string query = @"SELECT username, dob 
+                          FROM users 
+                          WHERE UPPER(username)=UPPER(@username) 
+                          AND [dob]=@dob";
+
+                    using (SqlConnection con = new SqlConnection(stringconnction))
+                    {
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@username", username ?? string.Empty);
+                            cmd.Parameters.AddWithValue("@dob", dob ?? string.Empty);
+
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+
+                                    Session.Instance.Username = reader.GetString(1);
+
+
+                                    Newpwd n1 = new Newpwd();
+                                }
+                            }
+                        }
+                    }
+
+
+
+                }
+            else
+                {
+                    MessageBox.Show("Wrong information", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
 
             }
         }
