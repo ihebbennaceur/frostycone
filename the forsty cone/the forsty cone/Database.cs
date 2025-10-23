@@ -24,8 +24,6 @@ namespace the_forsty_cone
         public void addnewuser(Users user)
         {
 
-         
-          //  string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True";
 
             string insertQuery = "INSERT INTO users (username, email, [password],DOB,isadmin) VALUES (@username, @email, @password ,@dob,@admin)";
 
@@ -97,7 +95,7 @@ namespace the_forsty_cone
         public void addproducts(Products product2)
         {
             //creates a connection to the database
-            string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True"; 
+          //  string stringconnction = "Data Source=ZAK-PC;Initial Catalog='the frosty cone';Integrated Security=True;TrustServerCertificate=True"; 
 
             string insertQuery = "INSERT INTO Products (Product_name, Product_price, Product_image) VALUES (@name, @price,@img)"; 
 
@@ -253,8 +251,6 @@ namespace the_forsty_cone
                     {
                         cmd.Parameters.AddWithValue("@p_id", a);
 
-
-
                         cmd.ExecuteNonQuery();
 
                         MessageBox.Show(" delete successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -273,7 +269,7 @@ namespace the_forsty_cone
         }
 
 
-        public void RemoveFromBasket(int a,int b) //make a methode that takes id as parameter and remove it from table basket
+        public void RemoveFromBasket(int a,int b) 
         {
             string deleteQuery = "DELETE FROM Basket WHERE id= @u_id  and  Product_id = @p_id";
             using (SqlConnection con = new SqlConnection(this.stringconnction))
@@ -422,19 +418,31 @@ namespace the_forsty_cone
 
                                     Newpwd n1 = new Newpwd();
                                 }
+                                else
+                                {
+                                    MessageBox.Show("Wrong information", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
                             }
                         }
                     }
 
 
-
                 }
-            else
+
+
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Wrong information", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+     
+            
+                        
+            
+
+
+
                 }
-
-
             }
         }
 

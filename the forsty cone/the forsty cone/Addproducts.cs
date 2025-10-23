@@ -40,8 +40,6 @@ namespace the_forsty_cone
         {
 
 
-
-
             if (!int.TryParse(tbx_productprice.Text, out int price)) // Validate that the price is a valid integer
             {
                 MessageBox.Show("Please enter a valid numeric price.");

@@ -437,6 +437,7 @@ namespace the_forsty_cone
         {
             InitializeComponent();
 
+
             // Check if session is valid
             if (Session.Instance.UserId == 0 || string.IsNullOrEmpty(Session.Instance.Username))
             {
@@ -465,12 +466,12 @@ namespace the_forsty_cone
 
         private void SetupUI()
         {
-           
+
             // Add welcome label
             lblWelcome = new Label();
-           
 
-            lblWelcome.Text = $"Welcome {Session.Instance.Username} ({( chkAdmin() ? "Admin" : "User")})";
+
+            lblWelcome.Text = $"Welcome {Session.Instance.Username} ({(chkAdmin() ? "Admin" : "User")})";
             lblWelcome.AutoSize = true;
             lblWelcome.Location = new Point(10, 10);
             this.Controls.Add(lblWelcome);
@@ -497,7 +498,7 @@ namespace the_forsty_cone
         {
             contextMenu = new ContextMenuStrip();
 
-            if (Session.Instance.IsAdmin==1)  
+            if (Session.Instance.IsAdmin == 1)
             {
                 contextMenu.Items.Add("Edit Product", null, EditProduct_Click);
                 contextMenu.Items.Add("Delete Product", null, DeleteProduct_Click);
@@ -574,7 +575,7 @@ namespace the_forsty_cone
                 int productId = int.Parse(selected.SubItems[0].Text);
                 string productName = selected.SubItems[1].Text;
 
-                // Remove from basket (you'll need to implement this in your Database class)
+                // Remove from basket 
                 db.RemoveFromBasket(Session.Instance.UserId, productId);
                 MessageBox.Show($"{productName} has been removed from your basket!", "Success");
             }
@@ -767,7 +768,7 @@ namespace the_forsty_cone
         List<Products> box = new List<Products>();
 
         private Basket b1;
-        
+
 
 
 
@@ -854,6 +855,11 @@ namespace the_forsty_cone
         private void btn_add_Click(object sender, EventArgs e)
         {
             btnAddToCart_Click(sender, e);
+        }
+
+        private void btn_remove_Click(object sender, EventArgs e)
+        {
+            RemoveFromBasket_Click(sender, e);
         }
     }
 }

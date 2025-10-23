@@ -28,95 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            lbl_username = new Label();
+            lbl_dob = new Label();
+            lbl_email = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             button1 = new Button();
             textBox3 = new TextBox();
-            label4 = new Label();
+            reset = new Label();
             SuspendLayout();
             // 
-            // label1
+            // lbl_username
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(93, 154);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            lbl_username.AutoSize = true;
+            lbl_username.Location = new Point(93, 154);
+            lbl_username.Name = "lbl_username";
+            lbl_username.Size = new Size(59, 15);
+            lbl_username.TabIndex = 0;
+            lbl_username.Text = "username";
             // 
-            // label2
+            // lbl_dob
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(93, 205);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
+            lbl_dob.AutoSize = true;
+            lbl_dob.Location = new Point(93, 205);
+            lbl_dob.Name = "lbl_dob";
+            lbl_dob.Size = new Size(73, 15);
+            lbl_dob.TabIndex = 1;
+            lbl_dob.Text = "Date of Birth";
             // 
-            // label3
+            // lbl_email
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(93, 260);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 2;
-            label3.Text = "label3";
+            lbl_email.AutoSize = true;
+            lbl_email.Location = new Point(93, 260);
+            lbl_email.Name = "lbl_email";
+            lbl_email.Size = new Size(36, 15);
+            lbl_email.TabIndex = 2;
+            lbl_email.Text = "email";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(172, 154);
+            textBox1.Location = new Point(184, 151);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(172, 205);
+            textBox2.Location = new Point(184, 205);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 4;
             // 
             // button1
             // 
-            button1.Location = new Point(120, 333);
+            button1.Location = new Point(130, 332);
             button1.Name = "button1";
             button1.Size = new Size(122, 31);
             button1.TabIndex = 5;
-            button1.Text = "button1";
+            button1.Text = "Reset";
             button1.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(172, 260);
+            textBox3.Location = new Point(184, 260);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(100, 23);
             textBox3.TabIndex = 6;
             // 
-            // label4
+            // reset
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(172, 72);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 7;
-            label4.Text = "label4";
+            reset.AutoSize = true;
+            reset.Location = new Point(140, 83);
+            reset.Name = "reset";
+            reset.Size = new Size(85, 15);
+            reset.TabIndex = 7;
+            reset.Text = "reset password";
             // 
             // ForgotPassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(797, 503);
-            Controls.Add(label4);
+            Controls.Add(reset);
             Controls.Add(textBox3);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lbl_email);
+            Controls.Add(lbl_dob);
+            Controls.Add(lbl_username);
             Name = "ForgotPassword";
             Text = "ForgotPassword";
             Load += ForgotPassword_Load;
@@ -126,13 +126,13 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Label lbl_username;
+        private Label lbl_dob;
+        private Label lbl_email;
         private TextBox textBox1;
         private TextBox textBox2;
         private Button button1;
         private TextBox textBox3;
-        private Label label4;
+        private Label reset;
     }
 }

@@ -32,6 +32,7 @@
             listView1 = new ListView();
             imageList1 = new ImageList(components);
             btn_add = new Button();
+            btn_remove = new Button();
             SuspendLayout();
             // 
             // listView1
@@ -59,11 +60,22 @@
             btn_add.UseVisualStyleBackColor = true;
             btn_add.Click += btn_add_Click;
             // 
+            // btn_remove
+            // 
+            btn_remove.Location = new Point(220, 574);
+            btn_remove.Name = "btn_remove";
+            btn_remove.Size = new Size(75, 23);
+            btn_remove.TabIndex = 3;
+            btn_remove.Text = "Remove";
+            btn_remove.UseVisualStyleBackColor = true;
+            btn_remove.Click += btn_remove_Click;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(529, 631);
+            Controls.Add(btn_remove);
             Controls.Add(btn_add);
             Controls.Add(listView1);
             Name = "Menu";
@@ -79,5 +91,6 @@
         private Button btn_deleteitem;
         private Button btn_add;
         private Button btn_edit;
+        private Button btn_remove;
     }
 }

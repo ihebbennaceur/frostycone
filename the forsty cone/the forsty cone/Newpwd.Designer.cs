@@ -28,12 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Newpwd";
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            SuspendLayout();
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(110, 124);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(110, 215);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 1;
+            // 
+            // Newpwd
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Name = "Newpwd";
+            Text = "Newpwd";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox textBox1;
+        private TextBox textBox2;
     }
 }
