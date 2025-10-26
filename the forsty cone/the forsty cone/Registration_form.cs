@@ -47,6 +47,8 @@ namespace the_forsty_cone
 
         private void btn_register_Click(object sender, EventArgs e)
         {
+            Users u1 = new Users();
+           
 
             if (string.IsNullOrWhiteSpace(tbox_username.Text) == true && string.IsNullOrWhiteSpace(tbox_password.Text) &&
                 string.IsNullOrWhiteSpace(tbox_confirmpassword.Text) && string.IsNullOrWhiteSpace(tbox_email.Text))
@@ -68,6 +70,11 @@ namespace the_forsty_cone
                
                 
                 return; 
+            }
+            if (u1.Checkdt(tbox_DOB.Text) == false)
+            {
+                MessageBox.Show("Date of Birth must be in DD-MM-YYYY format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             

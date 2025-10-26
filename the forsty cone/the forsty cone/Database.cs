@@ -23,40 +23,35 @@ namespace the_forsty_cone
 
         public void addnewuser(Users user)
         {
-
+            // Hash the password before storing
+            string hashedPassword = PasswordHasher.HashPassword(user.password);
 
             string insertQuery = "INSERT INTO users (username, email, [password],DOB,isadmin) VALUES (@username, @email, @password ,@dob,@admin)";
-
 
             using (SqlConnection con = new SqlConnection(this.stringconnction))
             {
                 try //checks for errors
                 {
                     con.Open();
-                    //adds into database
+                    //adds into database with hashed password
                     using (SqlCommand cmd = new SqlCommand(insertQuery, con))
                     {
                         cmd.Parameters.AddWithValue("@username", user.username);
                         cmd.Parameters.AddWithValue("@email", user.email);
-                        cmd.Parameters.AddWithValue("@password", user.password);
+                        cmd.Parameters.AddWithValue("@password", hashedPassword); // Store hashed password
                         cmd.Parameters.AddWithValue("@dob", user.DOB);
                         cmd.Parameters.AddWithValue("@admin", user.isAdmin);
-
 
                         cmd.ExecuteNonQuery();
 
                         MessageBox.Show("Register successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                     }
-
                 }
                 catch (Exception ex) //checks for errors
                 {
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-
             }
         }
 
@@ -387,64 +382,134 @@ namespace the_forsty_cone
             }
         }
 
-        public void resetpassword(string email, string username, string dob)
+
+        public bool VerifyUserForReset(string email, string username, string dob)
         {
-            if (checkEmailExist(email) == true)
+            if (!checkEmailExist(email))
             {
+                return false;
+            }
 
+            try
+            {
+                string query = @"SELECT COUNT(*) 
+                               FROM users 
+                               WHERE UPPER(email)=UPPER(@email) 
+                               AND UPPER(username)=UPPER(@username) 
+                               AND dob=@dob";
 
-                try
+                using (SqlConnection con = new SqlConnection(stringconnction))
                 {
-                    string query = @"SELECT username, dob 
-                          FROM users 
-                          WHERE UPPER(username)=UPPER(@username) 
-                          AND [dob]=@dob";
-
-                    using (SqlConnection con = new SqlConnection(stringconnction))
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        con.Open();
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.Parameters.AddWithValue("@username", username ?? string.Empty);
-                            cmd.Parameters.AddWithValue("@dob", dob ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@dob", dob);
 
-                            using (SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-
-                                    Session.Instance.Username = reader.GetString(1);
-
-
-                                    Newpwd n1 = new Newpwd();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Wrong information", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                        }
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
                     }
-
-
-                }
-
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-     
-            
-                        
-            
-
-
-
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error verifying user: " + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
+
+
+
+        public bool UpdatePassword(string email, string newPassword)
+        {
+            try
+            {
+                // Hash the new password
+                //string hashedPassword = PasswordHasher.HashPassword(newPassword);
+                string hashedPassword= newPassword; // Replace with actual hashing
+
+                string updateQuery = @"UPDATE users 
+                                     SET [password] = @password 
+                                     WHERE email = @email";
+
+                using (SqlConnection con = new SqlConnection(stringconnction))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@password", hashedPassword);
+                        cmd.Parameters.AddWithValue("@email", email);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating password: " + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //public void resetpassword(string email, string username, string dob)
+        //{
+        //    if (checkEmailExist(email) == true)
+        //    {
+
+
+        //        try
+        //        {
+        //            string query = @"SELECT username, dob 
+        //                  FROM users 
+        //                  WHERE UPPER(username)=UPPER(@username) 
+        //                  AND [dob]=@dob";
+
+        //            using (SqlConnection con = new SqlConnection(stringconnction))
+        //            {
+        //                con.Open();
+        //                using (SqlCommand cmd = new SqlCommand(query, con))
+        //                {
+        //                    cmd.Parameters.AddWithValue("@username", username ?? string.Empty);
+        //                    cmd.Parameters.AddWithValue("@dob", dob ?? string.Empty);
+
+        //                    using (SqlDataReader reader = cmd.ExecuteReader())
+        //                    {
+        //                        if (reader.Read())
+        //                        {
+
+        //                            Session.Instance.Username = reader.GetString(1);
+
+
+        //                            Newpwd n1 = new Newpwd();
+        //                        }
+        //                        else
+        //                        {
+        //                            MessageBox.Show("Wrong information", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //                        }
+        //                    }
+        //                }
+        //            }
+
+
+        //        }
+
+
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+
+        //        }
+        //    }
+        //}
+
+
+
 
         public void MakeAdmin(int id, int isadmin)
         {

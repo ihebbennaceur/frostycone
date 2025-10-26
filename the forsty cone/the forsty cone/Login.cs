@@ -45,7 +45,7 @@ namespace the_forsty_cone
 
             Database db2 = new Database(); //create database object to call method
 
-
+            PasswordHasher p1 = new PasswordHasher(); //create password hasher object to hash password
 
 
 

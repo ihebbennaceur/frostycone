@@ -31,10 +31,10 @@
             lbl_username = new Label();
             lbl_dob = new Label();
             lbl_email = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            tbx_username = new TextBox();
+            tbx_dob = new TextBox();
             button1 = new Button();
-            textBox3 = new TextBox();
+            tbx_email = new TextBox();
             reset = new Label();
             SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             // lbl_dob
             // 
             lbl_dob.AutoSize = true;
-            lbl_dob.Location = new Point(93, 205);
+            lbl_dob.Location = new Point(93, 263);
             lbl_dob.Name = "lbl_dob";
             lbl_dob.Size = new Size(73, 15);
             lbl_dob.TabIndex = 1;
@@ -59,41 +59,43 @@
             // lbl_email
             // 
             lbl_email.AutoSize = true;
-            lbl_email.Location = new Point(93, 260);
+            lbl_email.Location = new Point(93, 205);
             lbl_email.Name = "lbl_email";
             lbl_email.Size = new Size(36, 15);
             lbl_email.TabIndex = 2;
             lbl_email.Text = "email";
             // 
-            // textBox1
+            // tbx_username
             // 
-            textBox1.Location = new Point(184, 151);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 3;
+            tbx_username.Location = new Point(184, 151);
+            tbx_username.Name = "tbx_username";
+            tbx_username.Size = new Size(100, 23);
+            tbx_username.TabIndex = 3;
+            tbx_username.TextChanged += tbx_username_TextChanged;
             // 
-            // textBox2
+            // tbx_dob
             // 
-            textBox2.Location = new Point(184, 205);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 4;
+            tbx_dob.Location = new Point(184, 263);
+            tbx_dob.Name = "tbx_dob";
+            tbx_dob.Size = new Size(100, 23);
+            tbx_dob.TabIndex = 4;
             // 
             // button1
             // 
-            button1.Location = new Point(130, 332);
+            button1.Location = new Point(103, 329);
             button1.Name = "button1";
             button1.Size = new Size(122, 31);
             button1.TabIndex = 5;
             button1.Text = "Reset";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // textBox3
+            // tbx_email
             // 
-            textBox3.Location = new Point(184, 260);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
+            tbx_email.Location = new Point(184, 202);
+            tbx_email.Name = "tbx_email";
+            tbx_email.Size = new Size(100, 23);
+            tbx_email.TabIndex = 6;
             // 
             // reset
             // 
@@ -110,10 +112,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(797, 503);
             Controls.Add(reset);
-            Controls.Add(textBox3);
+            Controls.Add(tbx_email);
             Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(tbx_dob);
+            Controls.Add(tbx_username);
             Controls.Add(lbl_email);
             Controls.Add(lbl_dob);
             Controls.Add(lbl_username);
@@ -129,10 +131,10 @@
         private Label lbl_username;
         private Label lbl_dob;
         private Label lbl_email;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbx_username;
+        private TextBox tbx_dob;
         private Button button1;
-        private TextBox textBox3;
+        private TextBox tbx_email;
         private Label reset;
     }
 }
