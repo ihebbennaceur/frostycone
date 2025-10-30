@@ -38,8 +38,8 @@ namespace the_forsty_cone
 
         private void SetupUI()
         {
-            this.Text = "See all users";
-            this.Size = new Size(500, 400);
+            this.Text = "Manage Users";
+            this.Size = new Size(500, 500);
             this.StartPosition = FormStartPosition.CenterParent;
 
             listViewusers = new ListView();
@@ -47,13 +47,67 @@ namespace the_forsty_cone
             listViewusers.FullRowSelect = true;
             listViewusers.GridLines = true;
             listViewusers.Dock = DockStyle.Top;
-            listViewusers.Height = 300;
+            listViewusers.Height = 400;
 
-            listViewusers.Columns.Add("id", 200);
-            listViewusers.Columns.Add("Users name", 100);
-            listViewusers.Columns.Add("Admin", 300);
+            listViewusers.Columns.Add("ID", 100);
+            listViewusers.Columns.Add("Username", 200);
+            listViewusers.Columns.Add("Admin", 100);
+
+            var deleteButton = new Button
+            {
+                Text = "Delete Selected User",
+                Dock = DockStyle.Bottom,
+                Height = 40
+            };
+            deleteButton.Click += DeleteSelectedUser;
+
+            LoadUsers();
 
             this.Controls.Add(listViewusers);
+            this.Controls.Add(deleteButton);
+        }
+
+        private void LoadUsers()
+        {
+            listViewusers.Items.Clear();
+            Database db = new Database();
+            var users = db.GetAllUsers();
+
+            foreach (var user in users)
+            {
+                var item = new ListViewItem(user.id.ToString());
+                item.SubItems.Add(user.username);
+                item.SubItems.Add(user.isAdmin == 1 ? "Yes" : "No");
+                listViewusers.Items.Add(item);
+            }
+        }
+
+        private void DeleteSelectedUser(object sender, EventArgs e)
+        {
+            if (listViewusers.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a user to delete", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedItem = listViewusers.SelectedItems[0];
+            int userId = int.Parse(selectedItem.Text);
+
+            if (userId == Session.Instance.UserId)
+            {
+                MessageBox.Show("You cannot delete your own account", "Operation Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion",
+                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Database db = new Database();
+                db.deleteuser(userId);
+                LoadUsers(); // Refresh the list
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

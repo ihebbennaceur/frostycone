@@ -1,0 +1,170 @@
+/* ===============================
+   Frosty Cone UI Theme ❄️🍦
+   =============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+  --frost-bg: rgba(255, 255, 255, 0.25);
+  --frost-border: rgba(255, 255, 255, 0.3);
+  --primary: #4b9eff;
+  --accent: #ff6fb5;
+  --text-dark: #1e1e2f;
+  --radius: 14px;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: var(--bg-gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: var(--frost-bg);
+  border: 1px solid var(--frost-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  padding: 2rem 2.5rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  color: var(--text-dark);
+  animation: fadeIn 0.8s ease;
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid #d0d0d0;
+  margin-top: 0.3rem;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(75, 158, 255, 0.2);
+}
+
+button {
+  width: 100%;
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.7rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+nav a, p a {
+  text-decoration: none;
+  background: var(--frost-bg);
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--frost-border);
+  transition: 0.3s;
+}
+
+nav a:hover, p a:hover {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+#message {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Table (admin page) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+thead {
+  background-color: var(--primary);
+  color: white;
+}
+
+td, th {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.del {
+  background: var(--accent);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.del:hover {
+  background: #ff5f9f;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container { padding: 1.5rem; }
+  h1, h2 { font-size: 1.4rem; }
+}

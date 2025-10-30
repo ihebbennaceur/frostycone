@@ -64,16 +64,32 @@ namespace the_forsty_cone
 
             if (db2.loginuser(tb_username.Text, tb_password.Text) == true)
             {
-                Menu m1 = new Menu();
-                this.Hide();
+                if (Session.Instance.IsAdmin == 1)
+                {
+                    Admin m1 = new Admin();
+                    this.Hide();
 
-                m1.FormClosed += (s, args) =>
-                 {
-                     Session.Instance.Clear(); // Clear session when menu is closed
-                     this.Close(); // Close login form
-                 };
+                    m1.FormClosed += (s, args) =>
+                    {
+                        Session.Instance.Clear(); // Clear session when admin form is closed
+                        this.Close(); // Close login form
+                    };
 
-                m1.Show();
+                    m1.Show();
+                }
+                else
+                {
+                    Menu m1 = new Menu();
+                    this.Hide();
+
+                    m1.FormClosed += (s, args) =>
+                    {
+                        Session.Instance.Clear(); // Clear session when menu is closed
+                        this.Close(); // Close login form
+                    };
+
+                    m1.Show();
+                }
             }
         }
 

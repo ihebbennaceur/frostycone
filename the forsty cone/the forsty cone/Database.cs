@@ -132,10 +132,9 @@ namespace the_forsty_cone
         {
             try
             {
-                string query = @"SELECT id, username, isadmin 
+                string query = @"SELECT id, username, isadmin, password 
                                  FROM users 
-                                 WHERE UPPER(username)=UPPER(@username) 
-                                 AND [password]=@password";
+                                 WHERE UPPER(username)=UPPER(@username)";
 
                 using (SqlConnection con = new SqlConnection(stringconnction))
                 {
@@ -143,18 +142,21 @@ namespace the_forsty_cone
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@username", username ?? string.Empty);
-                        cmd.Parameters.AddWithValue("@password", password ?? string.Empty);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                Session.Instance.UserId = reader.GetInt32(0);
-                                Session.Instance.Username = reader.GetString(1);
-                                Session.Instance.IsAdmin = reader.GetInt32(0);
+                                string hashedPassword = reader.GetString(3);
+                                if (PasswordHasher.VerifyPassword(password, hashedPassword))
+                                {
+                                    Session.Instance.UserId = reader.GetInt32(0);
+                                    Session.Instance.Username = reader.GetString(1);
+                                    Session.Instance.IsAdmin = reader.GetInt32(2);
 
-                                MessageBox.Show("Login successful", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return true;
+                                    MessageBox.Show("Login successful", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -320,34 +322,37 @@ namespace the_forsty_cone
             }
         }
 
-        public void AddToUsers(int a, string b, int c)
+        public List<(int id, string username, int isAdmin)> GetAllUsers()
         {
-            string ADDQuery2 = "SELECT id, username, isadmin FROM users";
-
+            var users = new List<(int id, string username, int isAdmin)>();
+            string query = "SELECT id, username, isadmin FROM users";
 
             using (SqlConnection con = new SqlConnection(this.stringconnction))
             {
                 try
                 {
                     con.Open();
-                    using (SqlCommand cmd = new SqlCommand(ADDQuery2, con))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("u_id", a);
-                        cmd.Parameters.AddWithValue("u_username", b);
-                        cmd.Parameters.AddWithValue("u_isadmin", c);
-
-                        cmd.ExecuteNonQuery();
-
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                users.Add((
+                                    reader.GetInt32(0),
+                                    reader.GetString(1),
+                                    reader.GetInt32(2)
+                                ));
+                            }
+                        }
                     }
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.Close();
-
             }
+            return users;
         }
 
 
@@ -427,8 +432,7 @@ namespace the_forsty_cone
             try
             {
                 // Hash the new password
-                //string hashedPassword = PasswordHasher.HashPassword(newPassword);
-                string hashedPassword= newPassword; // Replace with actual hashing
+                string hashedPassword = PasswordHasher.HashPassword(newPassword);
 
                 string updateQuery = @"UPDATE users 
                                      SET [password] = @password 
